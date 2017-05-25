@@ -1,0 +1,2 @@
+# random
+Life is Random.
