@@ -1,6 +1,6 @@
 # random
 
-> A Vue.js project for Random Life.
+> A Vue.js project for Random Life. 
 
 ## Build Setup
 
