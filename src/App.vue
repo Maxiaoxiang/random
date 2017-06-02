@@ -42,7 +42,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scope>
   body {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     color: #333;

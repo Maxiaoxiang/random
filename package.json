@@ -1,6 +1,6 @@
 {
   "name": "random",
-  "description": "A Vue.js project for Random Life.",
+  "description": "A Vue.js project for Random.",
   "version": "1.0.0",
   "author": "mss",
   "private": true,
@@ -20,7 +20,8 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
-    "scss-loader": "0.0.1",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.1",
