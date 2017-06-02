@@ -32,6 +32,7 @@
           .then(response => {
             const result = response['data']['data'];
             this.$data.data = result;
+            window.scroll(0, 0);
           })
           .catch(error => {
             thorw('请求随机文章失败' + error);
