@@ -1,6 +1,6 @@
 <template>
-  <div class="mod-custom">
-    自定义
+  <div class="mod-image">
+    图片
   </div>
 </template>
 

@@ -4,6 +4,7 @@ import axios from 'axios'
 import App from './App.vue'
 import article from './components/Article.vue'
 import music from './components/Music.vue'
+import image from './components/Image.vue'
 import custom from './components/Custom.vue'
 
 Vue.use(VueRouter)
@@ -12,6 +13,7 @@ Vue.prototype.$http = axios
 const routes = [
   { path: '/article', component: article, alias: '/' },
   { path: '/music', component: music },
+  { path: '/image', component: image },
   { path: '/custom', component: custom }
 ]
 
