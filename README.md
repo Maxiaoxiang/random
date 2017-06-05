@@ -16,11 +16,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-  
-
-### 开发进度
-`- [ ]` 主页
-`- [x]` 文章
-`- [ ]` 音乐
-`- [ ]` 壁纸
-`- [ ]` 自定义
