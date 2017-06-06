@@ -16,15 +16,13 @@ const store = new Vuex.Store({
   state: {
     music_arr: [],
     music: {
-      src: '',
+      url: '',
       name: '',
       isPlaying: false
     }
   },
   mutations: {
-    play (state) {
-      state.music.isPlaying = true;
-    }
+    
   }
 })
 

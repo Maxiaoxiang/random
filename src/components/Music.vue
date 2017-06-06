@@ -1,6 +1,8 @@
 <template>
   <div class="mod-music">
-    <audio :src="music.src" preload controls></audio>
+    <audio :src="music.src" preload id="audio" controls></audio>
+    <button @click="getMusicUrl">获取歌曲</button>
+    <button @click="play">播放</button>
   </div>
 </template>
 
@@ -25,11 +27,37 @@
           result.tracks.forEach((e) => {
             this.$store.state.music_arr.push(e.id);
           })
-          console.log(this.$store.state.music_arr)
         })
         .catch(error => {
           throw('获取用户歌单失败'+error);
         });
+      },
+      //获取歌曲
+      getMusicUrl: function(){
+        this.$http.get('https://www.easy-mock.com/mock/5936806691470c0ac10532a3/random/url').then(response => {
+          const result = response.data.data;
+          this.$store.state.music.url = result[0].url;
+          this.music = this.$store.state.music;
+          console.log(this.music,this.$store.state.music)
+        }).catch(error => {
+          throw('获取歌曲链接失败'+error);
+        })
+      },
+      //播放歌曲
+      play: function(){
+        let audio = document.querySelector('#audio');
+        if(!this.music.isPlaying){
+          audio.play();
+          this.music.isPlaying = true;
+        }
+      },
+      //暂停播放
+      stop: function(){
+        let audio = document.querySelector('#audio');
+        if(this.music.isPlaying){
+          audio.pause();
+          audio.currentTime = 0;
+        }
       }
     }
   }
