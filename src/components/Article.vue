@@ -45,7 +45,7 @@
 <style lang="scss" scope>
   .hd {
     .title {
-      margin: 80px 30px 0;
+      margin: 80px 15px 0;
       padding-bottom: 20px;
       text-align: center;
       border-bottom: 1px solid #e1e1e1;
@@ -58,7 +58,7 @@
   }
   
   .bd {
-    margin: 30px;
+    margin: 30px 15px;
     p {
       margin-bottom: 10px;
       text-indent: 2em;
