@@ -1,8 +1,8 @@
 <template>
   <div class="mod-music">
-    <audio :src="music.src" preload id="audio" controls></audio>
-    <button @click="getMusicUrl">获取歌曲</button>
+    <audio :src="music.url" preload id="audio" controls></audio>
     <button @click="play">播放</button>
+    <button @click="stop">暂停</button>
   </div>
 </template>
 
@@ -17,6 +17,7 @@ export default {
   //实例化后调用
   created: function () {
     this.getMusicList()
+    this.getMusicUrl()
   },
   methods: {
     //获取用户歌单
@@ -39,7 +40,6 @@ export default {
           const result = response.data.data;
           this.$store.state.music.url = result[0].url;
           this.music = this.$store.state.music;
-          console.log(this.music, this.$store.state.music)
         }).catch(error => {
           throw ('获取歌曲链接失败' + error);
         })
