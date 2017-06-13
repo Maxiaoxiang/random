@@ -1,6 +1,10 @@
 <template>
   <div class="mod-custom">
-    自定义
+    <div class="item">
+      <input type="text">
+      <div v-for="items in item">{{items.name}}</div>
+      <button @click="add">添加</button>
+    </div>
   </div>
 </template>
 
@@ -9,7 +13,12 @@
     name: 'app',
     data() {
       return {
-        data: ''
+        data: {
+          items: [
+          {name: 'mss'},
+          {name: 'sis'}
+        ]
+        }
       }
     },
     //实例化后调用

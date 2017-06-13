@@ -7,6 +7,7 @@ import article from './components/Article.vue'
 import music from './components/Music.vue'
 import image from './components/Image.vue'
 import custom from './components/Custom.vue'
+import food from './components/Food.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -27,10 +28,11 @@ const store = new Vuex.Store({
 })
 
 const routes = [
-  { path: '/article', component: article, alias: '/' },
+  { path: '/article', component: custom, alias: '/' },
   { path: '/music', component: music },
   { path: '/image', component: image },
-  { path: '/custom', component: custom }
+  { path: '/custom', component: custom },
+  { path: '/food', component: food }
 ]
 
 const router = new VueRouter({
