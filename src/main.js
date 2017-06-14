@@ -8,6 +8,7 @@ import music from './components/Music.vue'
 import image from './components/Image.vue'
 import custom from './components/Custom.vue'
 import food from './components/Food.vue'
+import lottery from './components/Lottery.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -32,7 +33,8 @@ const routes = [
   { path: '/music', component: music },
   { path: '/image', component: image },
   { path: '/custom', component: custom },
-  { path: '/food', component: food }
+  { path: '/food', component: food },
+  { path: '/lottery', component: lottery }
 ]
 
 const router = new VueRouter({
