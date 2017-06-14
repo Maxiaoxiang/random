@@ -45,8 +45,8 @@ export default {
     del: function (event) {
       let value = event.currentTarget.getAttribute('data-value');
       let index = this.data.items.indexOf(value);
-      if(index != '-1'){
-        this.data.items.splice(index ,1);
+      if (index != '-1') {
+        this.data.items.splice(index, 1);
       }
     },
     //随机

@@ -1,6 +1,15 @@
 <template>
     <div class="mod-lottery">
-        <button @click="random">随机</button>
+        <div class="hd">
+            <div class="lottery">
+                <span v-for="lottery in data.lotterys">{{lottery}}</span>
+                <span class="blue-ball">{{data.blue}}</span>
+            </div>
+        </div>
+        <div class="bd">
+            <button @click="random">随机</button>
+        </div>
+        <div class="ft"></div>
     </div>
 </template>
 
@@ -10,7 +19,9 @@ export default {
     data() {
         return {
             data: {
-                lottery: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+                arr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+                lotterys: [],
+                blue: ''
             }
         }
     },
@@ -21,11 +32,12 @@ export default {
     methods: {
         //随机
         random: function () {
-            let temp = JSON.parse(JSON.stringify(this.data.lottery));
+            let temp = JSON.parse(JSON.stringify(this.data.arr));
             let seven = JSON.parse(JSON.stringify(this.shuffle(temp, 7)));
             let blue = JSON.parse(JSON.stringify(this.shuffle(seven, 1)));
-            this.bubble(seven);
-            console.log(seven, blue)
+            this.data.lottery = this.bubble(seven);
+            this.data.blue = blue[0];
+            console.log(this.data.lottery, this.data.blue)
         },
         /**
          * 洗牌算法 
