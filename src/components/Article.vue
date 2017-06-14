@@ -14,35 +14,36 @@
 </template>
 
 <script>
-  export default {
-    name: 'app',
-    data() {
-      return {
-        data: ''
-      }
-    },
-    //实例化后调用
-    created: function() {
-      this.getArticle();
-    },
-    methods: {
-      //请求随机文章
-      getArticle: function() {
-        this.$http.get('https://interface.meiriyiwen.com/article/random?dev=1')
-          .then(response => {
-            const result = response['data']['data'];
-            this.$data.data = result;
-            window.scroll(0, 0);
-          })
-          .catch(error => {
-            thorw('请求随机文章失败' + error);
-          });
-      }
+export default {
+  name: 'app',
+  data() {
+    return {
+      data: ''
+    }
+  },
+  //实例化后调用
+  created: function () {
+    this.getArticle();
+  },
+  methods: {
+    //请求随机文章
+    getArticle: function () {
+      this.$http.get('https://interface.meiriyiwen.com/article/random?dev=1')
+        .then(response => {
+          const result = response['data']['data'];
+          this.$data.data = result;
+          window.scroll(0, 0);
+        })
+        .catch(error => {
+          thorw('请求随机文章失败' + error);
+        });
     }
   }
+}
 </script>
 
 <style lang="scss" scope>
+.mod-article {
   .hd {
     .title {
       margin: 80px 15px 0;
@@ -56,7 +57,7 @@
       text-align: center;
     }
   }
-  
+
   .bd {
     margin: 30px 15px;
     p {
@@ -66,18 +67,21 @@
       color: #757575;
     }
   }
-  
-  .ft .random {
-    display: block;
-    margin: 30px auto;
-    width: 120px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    outline: none;
-    border: none;
-    font-size: 16px;
-    background-color: #ec4043;
-    color: #fff;
+
+  .ft {
+    .random {
+      display: block;
+      margin: 30px auto;
+      width: 120px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      background-color: #ec4043;
+      color: #fff;
+    }
   }
+}
 </style>

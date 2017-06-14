@@ -1,18 +1,6 @@
 <template>
     <div class="mod-lottery">
-        <!--<div class="hd">
-                  <input type="text" id="option">
-                </div>-->
-        <!--<div class="bd">
-                  <ul>
-                    <li v-for="item in data.items">
-                      <div class="item">{{item}}</div>
-                    </li>
-                  </ul>
-                </div>-->
-        <div class="ft">
-            <button @click="random">随机</button>
-        </div>
+        <button @click="random">随机</button>
     </div>
 </template>
 
