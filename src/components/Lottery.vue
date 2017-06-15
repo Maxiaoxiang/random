@@ -3,11 +3,11 @@
         <div class="hd">
             <div class="lottery">
                 <span v-for="lottery in data.lotterys">{{lottery}}</span>
-                <span class="blue-ball">{{data.blue}}</span>
+                <span v-if="data.blue" class="blue-ball">{{data.blue}}</span>
             </div>
         </div>
         <div class="bd">
-            <button @click="random">随机</button>
+            <button @click="random" class="random">随机</button>
         </div>
         <div class="ft"></div>
     </div>
@@ -33,11 +33,10 @@ export default {
         //随机
         random: function () {
             let temp = JSON.parse(JSON.stringify(this.data.arr));
-            let seven = JSON.parse(JSON.stringify(this.shuffle(temp, 7)));
+            let seven = JSON.parse(JSON.stringify(this.shuffle(temp, 8)));
             let blue = JSON.parse(JSON.stringify(this.shuffle(seven, 1)));
-            this.data.lottery = this.bubble(seven);
+            this.data.lotterys = this.bubble(seven);
             this.data.blue = blue[0];
-            console.log(this.data.lottery, this.data.blue)
         },
         /**
          * 洗牌算法 
@@ -58,7 +57,7 @@ export default {
         //冒泡排序
         bubble: function (arr) {
             arr.forEach((value, i) => {
-                arr.forEach((value, j) => {
+                arr.forEach((v, j) => {
                     if (arr[j] > arr[j + 1]) {
                         let tmp = arr[j];
                         arr[j] = arr[j + 1];
@@ -67,21 +66,49 @@ export default {
                 });
             });
             return arr;
-        },
-        //深拷贝
-        copyArr: function (arr) {
-            return arr.map((e) => {
-                if (typeof e === 'object') {
-                    return Object.assign({}, e)
-                } else {
-                    return e
-                }
-            })
         }
     }
 }
 </script>
 
 <style lang="scss" scope>
-
+    .mod-lottery{
+        .hd{
+            margin-top: 30px;
+            padding: 0 15px;
+            .lottery{
+                display: -webkit-flex;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            span{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                color: #fff;
+                background-color: #c90000;
+                border-radius: 50%;
+                &.blue-ball{
+                    background-color: #0084f4;
+                }
+            }
+        }
+        .bd {
+            .random {
+              display: block;
+              margin: 30px auto;
+              width: 120px;
+              height: 50px;
+              line-height: 50px;
+              text-align: center;
+              outline: none;
+              border: none;
+              font-size: 16px;
+              background-color: #ec4043;
+              color: #fff;
+            }
+          }
+    }
 </style>
