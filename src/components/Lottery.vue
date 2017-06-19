@@ -27,7 +27,7 @@ export default {
     },
     //实例化后调用
     created: function () {
-
+        this.random();
     },
     methods: {
         //随机

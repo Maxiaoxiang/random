@@ -28,10 +28,6 @@ export default {
       }
     }
   },
-  //实例化后调用
-  created: function () {
-
-  },
   methods: {
     //添加
     add: function () {
