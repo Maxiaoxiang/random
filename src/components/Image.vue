@@ -209,7 +209,7 @@ export default {
         text-indent: 2em;
         line-height: 1.5;
       }
-      .sub {
+      .sub { 
         margin-top: 5px;
         font-size: 14px;
       }
