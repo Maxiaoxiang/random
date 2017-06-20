@@ -16,7 +16,7 @@ Vue.use(Vuex)
 Vue.prototype.$http = axios
 //获取Bing壁纸跨域
 Vue.prototype.jsonp = jsonp
-
+ 
 const store = new Vuex.Store({
   state: {
     music: {
