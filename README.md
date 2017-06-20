@@ -16,5 +16,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-2017-06-16

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import axios from 'axios'
+import jsonp from 'jsonp'
 import App from './App.vue'
 import article from './components/Article.vue'
 import music from './components/Music.vue'
@@ -13,11 +14,13 @@ import lottery from './components/Lottery.vue'
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.prototype.$http = axios
+//获取Bing壁纸跨域
+Vue.prototype.jsonp = jsonp
 
 const store = new Vuex.Store({
   state: {
-    music_arr: [],
     music: {
+      arr: [],
       url: '',
       name: '',
       isPlaying: false
@@ -29,9 +32,9 @@ const store = new Vuex.Store({
 })
 
 const routes = [
-  { path: '/article', component: custom, alias: '/' },
+  { path: '/article', component: article},
   { path: '/music', component: music },
-  { path: '/image', component: image },
+  { path: '/image', component: image, alias: '/' },
   { path: '/custom', component: custom },
   { path: '/food', component: food },
   { path: '/lottery', component: lottery }
