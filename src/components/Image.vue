@@ -56,29 +56,23 @@ export default {
       if ('orientation' in screen) {
         if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
           that.$data.isVertical = true;
-          that.cancelFullScreen();
         } else {
           that.$data.isVertical = false;
-          that.viewFullScreen();
         }
         screen.orientation.addEventListener("change", function (e) {
           if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
             that.$data.isVertical = true;
-            that.cancelFullScreen();
           } else {
             that.$data.isVertical = false;
-            that.viewFullScreen();
           }
         }, false);
       } else {
         window.addEventListener('orientationchange', function (event) {
           if (window.orientation == 180 || window.orientation == 0) {
             that.$data.isVertical = true;
-            that.cancelFullScreen();
           }
           if (window.orientation == 90 || window.orientation == -90) {
             that.$data.isVertical = false;
-            that.viewFullScreen();
           }
         });
       }
@@ -153,6 +147,7 @@ export default {
   }
   &.vertical {
     .bd {
+      margin-bottom: 70px;
       padding: 15px;
       color: #666;
       .title {
@@ -175,17 +170,23 @@ export default {
       }
     }
     .ft {
+      position: fixed;
+      text-align: center;
+      width: 100%;
+      bottom: 0;
+      background: rgba(1, 1, 1, 0.5);
       .random {
         display: block;
-        margin: 30px auto;
+        margin: 10px auto;
         width: 120px;
         height: 50px;
         line-height: 50px;
         text-align: center;
         outline: none;
         border: none;
+        background: rgba(1, 1, 1, 0.5);
+        border-radius: 10px;
         font-size: 16px;
-        background-color: #ec4043;
         color: #fff;
       }
     }
@@ -209,9 +210,12 @@ export default {
         text-indent: 2em;
         line-height: 1.5;
       }
-      .sub { 
+      .sub {
         margin-top: 5px;
         font-size: 14px;
+        .iconfont{
+          font-size: 14px;
+        }
       }
     }
     .ft {
