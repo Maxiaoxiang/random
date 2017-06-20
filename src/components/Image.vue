@@ -56,25 +56,62 @@ export default {
       if ('orientation' in screen) {
         if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
           that.$data.isVertical = true;
+          that.cancelFullScreen();
         } else {
           that.$data.isVertical = false;
+          that.viewFullScreen();
         }
         screen.orientation.addEventListener("change", function (e) {
           if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
             that.$data.isVertical = true;
+            that.cancelFullScreen();
           } else {
             that.$data.isVertical = false;
+            that.viewFullScreen();
           }
         }, false);
       } else {
         window.addEventListener('orientationchange', function (event) {
           if (window.orientation == 180 || window.orientation == 0) {
             that.$data.isVertical = true;
+            that.cancelFullScreen();
           }
           if (window.orientation == 90 || window.orientation == -90) {
             that.$data.isVertical = false;
+            that.viewFullScreen();
           }
         });
+      }
+    },
+    //开启全屏模式
+    viewFullScreen: function () {
+      var docElm = document.documentElement;
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+      }
+      else if (docElm.msRequestFullscreen) {
+        docElm.msRequestFullscreen();
+      }
+      else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+      }
+      else if (docElm.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+      }
+    },
+    //关闭全屏模式
+    cancelFullScreen: function () {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+      else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      }
+      else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
       }
     },
     //格式化日期
