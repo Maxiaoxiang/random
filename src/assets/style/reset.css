@@ -24,13 +24,17 @@ abbr,acronym {
     border: 0;
     font-variant: normal;
 }
+a:hover, a:visited, a:link, a:active {
+    color: #fff;
+    text-decoration: none;
+}
 @font-face {
   font-family: 'iconfont';  /* project id 331352 */
-  src: url('//at.alicdn.com/t/font_tskzyew14by5jyvi.eot');
-  src: url('//at.alicdn.com/t/font_tskzyew14by5jyvi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_tskzyew14by5jyvi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_tskzyew14by5jyvi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_tskzyew14by5jyvi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_zuup6147ysj7nwmi.eot');
+  src: url('//at.alicdn.com/t/font_zuup6147ysj7nwmi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_zuup6147ysj7nwmi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_zuup6147ysj7nwmi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_zuup6147ysj7nwmi.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: 'iconfont';

@@ -147,7 +147,6 @@ export default {
   }
   &.vertical {
     .bd {
-      margin-bottom: 70px;
       padding: 15px;
       color: #666;
       .title {
@@ -170,11 +169,6 @@ export default {
       }
     }
     .ft {
-      position: fixed;
-      text-align: center;
-      width: 100%;
-      bottom: 0;
-      background: rgba(1, 1, 1, 0.5);
       .random {
         display: block;
         margin: 10px auto;
