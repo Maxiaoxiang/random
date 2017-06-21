@@ -10,7 +10,6 @@ import image from './components/Image.vue'
 import custom from './components/Custom.vue'
 import food from './components/Food.vue'
 import lottery from './components/Lottery.vue'
-import header from './components/Header.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -48,8 +47,5 @@ const router = new VueRouter({
 const app = new Vue({
   router,
   store,
-  components: {
-    header: header
-  },
   render: h => h(App)
 }).$mount('#app')
