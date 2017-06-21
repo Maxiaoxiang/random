@@ -38,10 +38,11 @@ export default {
     this.getImage();
     this.getOrientation();
   },
-  computed:{
-    returnVertical:function(){
+  computed: {
+    //返回横竖屏状态
+    returnVertical: function () {
       return this.$store.state.status.isVertical;
-    }    
+    }
   },
   methods: {
     //获取图片

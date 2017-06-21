@@ -32,6 +32,7 @@ export default {
         }
     },
     computed: {
+        //返回横竖屏状态
         returnVertical: function () {
             return this.$store.state.status.isVertical;
         }
@@ -74,7 +75,7 @@ export default {
         z-index: 997;
         font-size: 28px;
         text-align: center;
-        &.transverse{
+        &.transverse {
             right: auto;
             left: 20px;
         }

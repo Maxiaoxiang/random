@@ -44,6 +44,14 @@ const store = new Vuex.Store({
   }
 })
 
+/**
+ * article   => 文章
+ * music     => 音乐
+ * image     => 壁纸
+ * coustom   => 自定义
+ * food      => 美食
+ * lottery   => 彩票
+ */
 const routes = [
   { path: '/article', component: article},
   { path: '/music', component: music },
