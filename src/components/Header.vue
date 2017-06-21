@@ -1,6 +1,7 @@
 <template>
     <div class="mod-header">
-        <div @click="toggle" class="toggle iconfont">&#xe646;</div>
+        <div @click="toggle" class="toggle iconfont" :class="returnVertical || 'transverse'">&#xe646;</div>
+        <div class="mask" @click="toggle" v-show="!isOpen"></div>
         <div class="nav" id="nav">
             <ul>
                 <li v-for="nav in navs">
@@ -30,6 +31,11 @@ export default {
             isOpen: true
         }
     },
+    computed: {
+        returnVertical: function () {
+            return this.$store.state.status.isVertical;
+        }
+    },
     methods: {
         //展开收起侧栏导航
         toggle: function () {
@@ -47,6 +53,14 @@ export default {
 </script>
 <style lang="scss" scope>
 .mod-header {
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 998;
+    }
     .toggle {
         position: fixed;
         top: 20px;
@@ -57,9 +71,13 @@ export default {
         color: #fff;
         background: rgba(1, 1, 1, 0.5);
         border-radius: 5px;
-        z-index: 999;
+        z-index: 997;
         font-size: 28px;
         text-align: center;
+        &.transverse{
+            right: auto;
+            left: 20px;
+        }
     }
     .nav {
         position: fixed;

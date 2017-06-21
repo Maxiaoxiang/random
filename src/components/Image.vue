@@ -1,5 +1,5 @@
 <template>
-  <div class="mod-image" :class="isVertical ? 'vertical' : 'transverse'">
+  <div class="mod-image" :class="returnVertical ? 'vertical' : 'transverse'">
     <div class="hd">
       <img :src="data.url" :alt="data.title" @click="toggle">
     </div>
@@ -38,6 +38,11 @@ export default {
     this.getImage();
     this.getOrientation();
   },
+  computed:{
+    returnVertical:function(){
+      return this.$store.state.status.isVertical;
+    }    
+  },
   methods: {
     //获取图片
     getImage: function () {
@@ -55,24 +60,24 @@ export default {
       const that = this;
       if ('orientation' in screen) {
         if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
-          that.$data.isVertical = true;
+          that.$store.state.status.isVertical = true;
         } else {
-          that.$data.isVertical = false;
+          that.$store.state.status.isVertical = false;
         }
         screen.orientation.addEventListener("change", function (e) {
           if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
-            that.$data.isVertical = true;
+            that.$store.state.status.isVertical = true;
           } else {
-            that.$data.isVertical = false;
+            that.$store.state.status.isVertical = false;
           }
         }, false);
       } else {
         window.addEventListener('orientationchange', function (event) {
           if (window.orientation == 180 || window.orientation == 0) {
-            that.$data.isVertical = true;
+            that.$store.state.status.isVertical = true;
           }
           if (window.orientation == 90 || window.orientation == -90) {
-            that.$data.isVertical = false;
+            that.$store.state.status.isVertical = false;
           }
         });
       }
@@ -206,10 +211,6 @@ export default {
       }
       .sub {
         margin-top: 5px;
-        font-size: 14px;
-        .iconfont{
-          font-size: 14px;
-        }
       }
     }
     .ft {

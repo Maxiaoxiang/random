@@ -16,7 +16,17 @@ Vue.use(Vuex)
 Vue.prototype.$http = axios
 //获取Bing壁纸jsonp格式
 Vue.prototype.jsonp = jsonp
- 
+
+/**
+ * music       => 音乐
+ *  arr        => 播放列表
+ *  url        => 当前播放歌曲链接
+ *  name       => 当前播放歌曲名称
+ *  isPlaying  => 是否正在播放
+ * 
+ * status      => 状态
+ *  isVertical => 是否竖屏
+ */
 const store = new Vuex.Store({
   state: {
     music: {
@@ -24,6 +34,9 @@ const store = new Vuex.Store({
       url: '',
       name: '',
       isPlaying: false
+    },
+    status: {
+      isVertical: true
     }
   },
   mutations: {
