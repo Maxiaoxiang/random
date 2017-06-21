@@ -10,11 +10,12 @@ import image from './components/Image.vue'
 import custom from './components/Custom.vue'
 import food from './components/Food.vue'
 import lottery from './components/Lottery.vue'
+import header from './components/Header.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.prototype.$http = axios
-//获取Bing壁纸跨域
+//获取Bing壁纸jsonp格式
 Vue.prototype.jsonp = jsonp
  
 const store = new Vuex.Store({
@@ -47,5 +48,8 @@ const router = new VueRouter({
 const app = new Vue({
   router,
   store,
+  components: {
+    header: header
+  },
   render: h => h(App)
 }).$mount('#app')

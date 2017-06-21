@@ -86,7 +86,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 .mod-custom {
   .hd {
     display: -webkit-flex;
