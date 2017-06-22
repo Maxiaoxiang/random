@@ -45,7 +45,7 @@ export default {
         })
     },
     //播放歌曲
-    play: function () {
+    play() {
       let audio = document.querySelector('#audio');
       if (!this.music.isPlaying) {
         audio.play();
@@ -53,7 +53,7 @@ export default {
       }
     },
     //暂停播放
-    stop: function () {
+    stop() {
       let audio = document.querySelector('#audio');
       if (this.music.isPlaying) {
         audio.pause();

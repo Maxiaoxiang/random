@@ -13,7 +13,7 @@
       }
     },
     //实例化后调用
-    created: function() {
+    created() {
       
     },
     methods: {

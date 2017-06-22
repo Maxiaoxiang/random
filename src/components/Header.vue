@@ -33,13 +33,13 @@ export default {
     },
     computed: {
         //返回横竖屏状态
-        returnVertical: function () {
+        returnVertical() {
             return this.$store.state.status.isVertical;
         }
     },
     methods: {
         //展开收起侧栏导航
-        toggle: function () {
+        toggle() {
             const $nav = document.getElementById('nav');
             if (this.$data.isOpen) {
                 $nav.style.left = '0px';

@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     //添加
-    add: function () {
+    add() {
       const option = document.getElementById("option");
       if (option.value != '') {
         this.data.items.push(option.value);
@@ -38,7 +38,7 @@ export default {
       }
     },
     //删除
-    del: function (event) {
+    del(event) {
       let value = event.currentTarget.getAttribute('data-value');
       let index = this.data.items.indexOf(value);
       if (index != '-1') {
@@ -46,7 +46,7 @@ export default {
       }
     },
     //随机
-    random: function () {
+    random() {
       let items = JSON.parse(JSON.stringify(this.data.items));
       //结果数量，结果数量<数组长度&&结果数量>1
       // let c = count || 1;
@@ -61,7 +61,7 @@ export default {
      * arr 数组
      * count 取出个数
      */
-    shuffle: function (arr, count) {
+    shuffle(arr, count) {
       let len = arr.length;
       let c = count || len;
       arr.forEach((value, i) => {
@@ -73,7 +73,7 @@ export default {
       return arr.splice(0, c);
     },
     //深拷贝
-    copyArr: function (arr) {
+    copyArr(arr) {
       return arr.map((e) => {
         if (typeof e === 'object') {
           return Object.assign({}, e)

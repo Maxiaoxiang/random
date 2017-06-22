@@ -22,12 +22,12 @@ export default {
     }
   },
   //实例化后调用
-  created: function () {
+  created() {
     this.getArticle();
   },
   methods: {
     //请求随机文章
-    getArticle: function () {
+    getArticle() {
       this.$http.get('https://interface.meiriyiwen.com/article/random?dev=1')
         .then(response => {
           const result = response['data']['data'];

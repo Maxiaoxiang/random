@@ -26,12 +26,12 @@ export default {
         }
     },
     //实例化后调用
-    created: function () {
+    created() {
         this.random();
     },
     methods: {
         //随机
-        random: function () {
+        random() {
             let temp = JSON.parse(JSON.stringify(this.data.arr));
             let seven = JSON.parse(JSON.stringify(this.shuffle(temp, 8)));
             let blue = JSON.parse(JSON.stringify(this.shuffle(seven, 1)));
@@ -43,7 +43,7 @@ export default {
          * arr 数组
          * count 取出个数
          */
-        shuffle: function (arr, count) {
+        shuffle(arr, count) {
             let len = arr.length;
             let c = count || len;
             arr.forEach((value, i) => {
@@ -55,7 +55,7 @@ export default {
             return arr.splice(0, c);
         },
         //冒泡排序
-        bubble: function (arr) {
+        bubble(arr) {
             arr.forEach((value, i) => {
                 arr.forEach((v, j) => {
                     if (arr[j] > arr[j + 1]) {
@@ -72,43 +72,43 @@ export default {
 </script>
 
 <style lang="scss" scope>
-    .mod-lottery{
-        .hd{
-            margin-top: 30px;
-            padding: 0 15px;
-            .lottery{
-                display: -webkit-flex;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-            }
-            span{
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
-                text-align: center;
-                color: #fff;
-                background-color: #c90000;
-                border-radius: 50%;
-                &.blue-ball{
-                    background-color: #0084f4;
-                }
+.mod-lottery {
+    .hd {
+        margin-top: 30px;
+        padding: 0 15px;
+        .lottery {
+            display: -webkit-flex;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        span {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            background-color: #c90000;
+            border-radius: 50%;
+            &.blue-ball {
+                background-color: #0084f4;
             }
         }
-        .bd {
-            .random {
-              display: block;
-              margin: 30px auto;
-              width: 120px;
-              height: 50px;
-              line-height: 50px;
-              text-align: center;
-              outline: none;
-              border: none;
-              font-size: 16px;
-              background-color: #ec4043;
-              color: #fff;
-            }
-          }
     }
+    .bd {
+        .random {
+            display: block;
+            margin: 30px auto;
+            width: 120px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            outline: none;
+            border: none;
+            font-size: 16px;
+            background-color: #ec4043;
+            color: #fff;
+        }
+    }
+}
 </style>
