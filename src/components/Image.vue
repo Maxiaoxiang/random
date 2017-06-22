@@ -1,58 +1,84 @@
 <template>
-    <div class="mod-image" :class="rVertical ? 'vertical' : 'transverse'">
-        <div class="hd">
-            <img :src="data.url" :alt="data.title" @click="toggle">
-        </div>
-        <div class="bd" id="description">
-            <p class="title">{{data.title}}</p>
-            <p class="description">{{data.description}}</p>
-            <p class="sub">
-                <i class="iconfont">&#xe636;</i>
-                {{getFormatDate(data.enddate)}}
-            </p>
-            <p class="sub">
-                <i class="iconfont">&#xe6eb;</i>
-                {{data.attribute}}
-            </p>
-            <p class="sub">
-                <i class="iconfont">&#xe6d0;</i>
-                {{data.copyright}}
-            </p>
-        </div>
-        <div class="ft" v-show="!rVertical">
-            <button @click="getImage" class="random" id="random">随机</button>
+    <div class="container">
+        <div class="mod-image" :class="rVertical">
+            <swiper :options="swiperOption" ref="mySwiper">
+                <swiper-slide v-for="slide in swiperSlides">
+                    <div class="hd">
+                        <img :src="slide.url" :alt="slide.title" @click="toggle">
+                    </div>
+                    <div class="bd" id="description">
+                        <p class="title">{{slide.title}}</p>
+                        <p class="description">{{slide.description}}</p>
+                        <p class="sub">
+                            <i class="iconfont">&#xe636;</i>
+                            {{getFormatDate(slide.enddate)}}
+                        </p>
+                        <p class="sub">
+                            <i class="iconfont">&#xe6eb;</i>
+                            {{slide.attribute}}
+                        </p>
+                        <p class="sub">
+                            <i class="iconfont">&#xe6d0;</i>
+                            {{slide.copyright}}
+                        </p>
+                    </div>
+                </swiper-slide>
+            </swiper>
         </div>
     </div>
 </template>
 
 <script>
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
     name: 'app',
     data() {
         return {
             data: '',
-            isVertical: true
+            isVertical: 'horizontal',
+            swiperOption: {
+                notNextTick: true,
+                autoplay: false,
+                direction: 'horizontal',
+                setWrapperSize: true,
+                mousewheelControl: true,
+                observeParents: true
+            },
+            swiperSlides: []
         }
     },
     created() {
         this.getImage();
+        this.getImage();
+        this.getImage();
         this.getOrientation();
+    },
+    components: {
+        swiper,
+        swiperSlide
     },
     computed: {
         //返回横竖屏状态
         rVertical() {
             return this.$store.state.status.isVertical;
+        },
+        swiper() {
+            return this.$refs.mySwiper.swiper
         }
+    },
+    mounted() {
+        
     },
     methods: {
         //获取图片
-        getImage() {
+        getImage(callback) {
             const that = this;
             this.jsonp('https://bing.ioliu.cn/v1/rand?type=json', null, function (err, data) {
                 if (err) {
                     console.error(err.message)
                 } else {
                     that.$data.data = data.data;
+                    that.$data.swiperSlides.push(data.data);
                 }
             });
         },
@@ -61,24 +87,24 @@ export default {
             const that = this;
             if ('orientation' in screen) {
                 if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
-                    that.$store.state.status.isVertical = true;
+                    that.$store.state.status.isVertical = 'vertical';
                 } else {
-                    that.$store.state.status.isVertical = false;
+                    that.$store.state.status.isVertical = 'horizontal';
                 }
                 screen.orientation.addEventListener("change", function (e) {
                     if (screen.orientation.angle == 0 || screen.orientation.angle == -180) {
-                        that.$store.state.status.isVertical = true;
+                        that.$store.state.status.isVertical = 'vertical';
                     } else {
-                        that.$store.state.status.isVertical = false;
+                        that.$store.state.status.isVertical = 'horizontal';
                     }
                 }, false);
             } else {
                 window.addEventListener('orientationchange', function (event) {
                     if (window.orientation == 180 || window.orientation == 0) {
-                        that.$store.state.status.isVertical = true;
+                        that.$store.state.status.isVertical = 'vertical';
                     }
                     if (window.orientation == 90 || window.orientation == -90) {
-                        that.$store.state.status.isVertical = false;
+                        that.$store.state.status.isVertical = 'horizontal';
                     }
                 });
             }
@@ -176,7 +202,7 @@ export default {
             }
         }
     }
-    &.transverse {
+    &.horizontal {
         .bd {
             position: absolute;
             left: 0;
@@ -197,25 +223,6 @@ export default {
             }
             .sub {
                 margin-top: 5px;
-            }
-        }
-        .ft {
-            .random {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                display: block;
-                width: 100px;
-                height: 40px;
-                line-height: 40px;
-                text-align: center;
-                border-radius: 5px;
-                outline: none;
-                border: none;
-                font-size: 16px;
-                background: rgba(1, 1, 1, 0.5);
-                color: #fff;
-                transition: right 600ms ease-in-out;
             }
         }
     }
