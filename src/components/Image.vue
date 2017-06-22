@@ -19,7 +19,7 @@
         {{data.copyright}}
       </p>
     </div>
-    <div class="ft">
+    <div class="ft" v-show="!returnVertical">
       <button @click="getImage" class="random" id="random">随机</button>
     </div>
   </div>
@@ -144,6 +144,7 @@ export default {
 .mod-image {
   position: relative;
   overflow: hidden;
+  height: 100%;
   .hd {
     img {
       width: 100%;
@@ -172,22 +173,6 @@ export default {
         i {
           margin-right: 5px;
         }
-      }
-    }
-    .ft {
-      .random {
-        display: block;
-        margin: 10px auto;
-        width: 120px;
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        outline: none;
-        border: none;
-        background: rgba(1, 1, 1, 0.5);
-        border-radius: 10px;
-        font-size: 16px;
-        color: #fff;
       }
     }
   }

@@ -14,15 +14,20 @@ export default {
 </script>
 
 <style lang="scss" scope>
+html{
+    height: 100%;
+}
 body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   color: #333;
   background-color: #f3f3f3;
+  height: 100%;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 h1,

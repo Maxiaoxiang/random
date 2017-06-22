@@ -10,9 +10,11 @@ import image from './components/Image.vue'
 import custom from './components/Custom.vue'
 import food from './components/Food.vue'
 import lottery from './components/Lottery.vue'
+import slider from './components/Slider.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
+
 Vue.prototype.$http = axios
 //获取Bing壁纸jsonp格式
 Vue.prototype.jsonp = jsonp
@@ -58,7 +60,8 @@ const routes = [
   { path: '/image', component: image, alias: '/' },
   { path: '/custom', component: custom },
   { path: '/food', component: food },
-  { path: '/lottery', component: lottery }
+  { path: '/lottery', component: lottery },
+  { path: '/slider', component: slider }
 ]
 
 const router = new VueRouter({
