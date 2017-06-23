@@ -87,6 +87,21 @@ export default {
         background-color: #303641;
         color: #fff;
         font-size: 14px;
+        ul{
+            margin-top: 60px;
+        }
+        li{
+            display: block;
+            padding-left: 15px;
+            height: 50px;
+            line-height: 50px;
+            box-sizing: border-box;
+            i{
+                display: inline-block;
+                width: 30px;
+                text-align: center;
+            }
+        }
     }
 }
 </style>
