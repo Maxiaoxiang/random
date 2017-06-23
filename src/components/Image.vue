@@ -34,7 +34,7 @@ export default {
     name: 'app',
     data() {
         return {
-            data: '',
+            count: 0,
             isVertical: 'horizontal',
             swiperOption: {
                 notNextTick: true,
@@ -42,20 +42,29 @@ export default {
                 direction: 'horizontal',
                 setWrapperSize: true,
                 mousewheelControl: true,
-                observeParents: true
+                observeParents: true,
+                onSlideChangeEnd: swiper => {
+                    this.count++;
+                },
             },
             swiperSlides: []
         }
     },
     created() {
-        this.getImage();
-        this.getImage();
-        this.getImage();
+        for (let i = 0; i < 2; i++) {
+            this.getImage();
+        }
         this.getOrientation();
     },
     components: {
         swiper,
         swiperSlide
+    },
+    watch: {
+        //监听count变化触发swiper回调
+        count(val, oldVal) {
+            this.getImage();
+        },
     },
     computed: {
         //返回横竖屏状态
@@ -63,11 +72,11 @@ export default {
             return this.$store.state.status.isVertical;
         },
         swiper() {
-            return this.$refs.mySwiper.swiper
+            return this.$refs.mySwiper.swiper;
         }
     },
     mounted() {
-        
+
     },
     methods: {
         //获取图片
@@ -77,7 +86,6 @@ export default {
                 if (err) {
                     console.error(err.message)
                 } else {
-                    that.$data.data = data.data;
                     that.$data.swiperSlides.push(data.data);
                 }
             });
