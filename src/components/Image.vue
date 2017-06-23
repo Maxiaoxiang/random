@@ -45,7 +45,7 @@ export default {
                 observeParents: true,
                 onSlideChangeEnd: swiper => {
                     this.count++;
-                },
+                }
             },
             swiperSlides: []
         }
@@ -64,7 +64,7 @@ export default {
         //监听count变化触发swiper回调
         count(val, oldVal) {
             this.getImage();
-        },
+        }
     },
     computed: {
         //返回横竖屏状态
@@ -158,16 +158,9 @@ export default {
         },
         //横屏收起描述
         toggle() {
-            if (this.$data.isVertical === false) {
+            if (that.$store.state.status.isVertical === 'horizontal') {
                 let $description = document.getElementById('description');
-                let $random = document.getElementById('random');
-                if ($description.style.bottom == 0 || $description.style.bottom == '0px') {
-                    $description.style.bottom = -$description.offsetHeight + 'px';
-                    $random.style.right = -($random.offsetWidth + 20) + 'px';
-                } else {
-                    $description.style.bottom = 0;
-                    $random.style.right = 20 + 'px';
-                }
+                $description.style.bottom = $description.style.bottom == 0 || $description.style.bottom == '0px' ? -$description.offsetHeight + 'px' : 0;
             }
         }
     }
@@ -222,6 +215,7 @@ export default {
             box-sizing: border-box;
             background: rgba(1, 1, 1, 0.5);
             transition: bottom 600ms ease-in-out;
+            font-size: 14px;
             .title {
                 display: none;
             }

@@ -14,7 +14,6 @@ export default {
       music: this.$store.state.music
     }
   },
-  //实例化后调用
   created: function () {
     this.getMusicList()
     this.getMusicUrl()
