@@ -1,22 +1,28 @@
 <template>
   <div id="app">
     <mod-header></mod-header>
-    <router-view></router-view>
+    <div class="container">
+      <router-view></router-view>
+    </div>
+    <mod-footer></mod-footer>
   </div>
 </template>
 <script>
 import header from './components/Header.vue';
+import footer from './components/Footer.vue';
 export default {
   components: {
-    'mod-header': header
+    'mod-header': header,
+    'mod-footer': footer
   }
 }
 </script>
 
 <style lang="scss" scope>
-html{
-    height: 100%;
+html {
+  height: 100%;
 }
+
 body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   color: #333;

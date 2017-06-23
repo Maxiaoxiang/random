@@ -1,15 +1,18 @@
 <template>
     <div class="mod-header">
-        <div @click="toggle" class="toggle iconfont" :class="returnVertical || 'transverse'">&#xe646;</div>
-        <div class="mask" @click="toggle" v-show="!isOpen"></div>
-        <div class="nav" id="nav">
-            <ul>
-                <li v-for="nav in navs">
-                    <i class="iconfont" v-html="nav.icon"></i>
-                    <router-link :to="nav.link">{{nav.name}}</router-link>
-                </li>
-            </ul>
+        <div class="header">
+            <span class="iconfont logo">&#xe66c;</span>
+            <div @click="toggle" class="toggle iconfont" :class="returnVertical === 'horizontal'? 'horizontal' : 'vertical'">&#xe646;</div>
+            <div class="nav" id="nav">
+                <ul>
+                    <li v-for="nav in navs">
+                        <i class="iconfont" v-html="nav.icon"></i>
+                        <router-link :to="nav.link">{{nav.name}}</router-link>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <div class="mask" @click="toggle" v-show="!isOpen"></div>
     </div>
 </template>
 
@@ -54,60 +57,36 @@ export default {
 </script>
 <style lang="scss" scope>
 .mod-header {
-    .mask {
+    position: relative;
+    z-index: 99;
+    .header{
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 60px;
+        background-color: #303641;
+        color: #fff;
+        font-size: 14px;
+        .logo{
+            display: inline-block;
+            margin: 0 auto;
+            font-size: 40px;
+        }
+        .toggle{
+            position: absolute;
+            right: 20px;
+            font-size: 28px;
+        }
+    }
+    .nav{
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 998;
-    }
-    .toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-        line-height: 37px;
-        color: #fff;
-        background: rgba(1, 1, 1, 0.5);
-        border-radius: 5px;
-        z-index: 997;
-        font-size: 28px;
-        text-align: center;
-        &.transverse {
-            right: auto;
-            left: 20px;
-        }
-    }
-    .nav {
-        position: fixed;
-        top: 0;
-        left: -120px;
         width: 120px;
         height: 100%;
+        background-color: #303641;
         color: #fff;
-        font-size: 16px;
-        background: rgba(1, 1, 1, 0.5);
-        z-index: 999;
-        transition: left 400ms ease-in-out;
-        li {
-            position: relative;
-            overflow: hidden;
-            margin-top: 10px;
-            i {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                width: 25px;
-                font-size: 18px;
-                text-align: center;
-            }
-            a {
-                display: block;
-                padding: 10px 0 10px 40px;
-            }
-        }
+        font-size: 14px;
     }
 }
 </style>

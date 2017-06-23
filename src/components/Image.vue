@@ -1,30 +1,28 @@
 <template>
-    <div class="container">
-        <div class="mod-image" :class="rVertical">
-            <swiper :options="swiperOption" ref="mySwiper">
-                <swiper-slide v-for="slide in swiperSlides">
-                    <div class="hd">
-                        <img :src="slide.url" :alt="slide.title" @click="toggle">
-                    </div>
-                    <div class="bd" id="description">
-                        <p class="title">{{slide.title}}</p>
-                        <p class="description">{{slide.description}}</p>
-                        <p class="sub">
-                            <i class="iconfont">&#xe636;</i>
-                            {{getFormatDate(slide.enddate)}}
-                        </p>
-                        <p class="sub">
-                            <i class="iconfont">&#xe6eb;</i>
-                            {{slide.attribute}}
-                        </p>
-                        <p class="sub">
-                            <i class="iconfont">&#xe6d0;</i>
-                            {{slide.copyright}}
-                        </p>
-                    </div>
-                </swiper-slide>
-            </swiper>
-        </div>
+    <div class="mod-image" :class="rVertical">
+        <swiper :options="swiperOption" ref="mySwiper">
+            <swiper-slide v-for="slide in swiperSlides">
+                <div class="hd">
+                    <img :src="slide.url" :alt="slide.title" @click="toggle">
+                </div>
+                <div class="bd" id="description">
+                    <p class="title">{{slide.title}}</p>
+                    <p class="description">{{slide.description}}</p>
+                    <p class="sub">
+                        <i class="iconfont">&#xe636;</i>
+                        {{getFormatDate(slide.enddate)}}
+                    </p>
+                    <p class="sub">
+                        <i class="iconfont">&#xe6eb;</i>
+                        {{slide.attribute}}
+                    </p>
+                    <p class="sub">
+                        <i class="iconfont">&#xe6d0;</i>
+                        {{slide.copyright}}
+                    </p>
+                </div>
+            </swiper-slide>
+        </swiper>
     </div>
 </template>
 
