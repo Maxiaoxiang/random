@@ -3,7 +3,7 @@
         <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slide v-for="slide in swiperSlides" :key="slide">
                 <div class="hd">
-                    <img :src="slide.url" :alt="slide.title" @click="toggle">
+                    <img :src="slide.original_pic" :alt="slide.title" @click="toggle">
                 </div>
                 <div class="bd" id="description">
                     <p class="title">{{slide.title}}</p>
