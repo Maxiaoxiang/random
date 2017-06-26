@@ -42,6 +42,7 @@ export default {
                 mousewheelControl: true,
                 observeParents: true,
                 onSlideChangeEnd: swiper => {
+                    this.swiperObj = swiper;
                     this.count++;
                 }
             },

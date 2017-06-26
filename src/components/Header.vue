@@ -48,10 +48,12 @@ export default {
             if (this.$data.isOpen) {
                 $nav.style.left = '0px';
                 $mask.style.opacity = 1;
+                $mask.style.display = 'block';
                 this.$data.isOpen = false;
             } else {
                 $nav.style.left = '-120px';
                 $mask.style.opacity = 0;
+                $mask.style.display = 'none';
                 this.$data.isOpen = true;
             }
         }
@@ -60,7 +62,10 @@ export default {
 </script>
 <style lang="scss" scope>
 .mod-header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 99;
     .header {
         position: relative;
@@ -74,7 +79,7 @@ export default {
         .logo {
             display: inline-block;
             margin: 0 auto;
-            font-size: 32px;
+            font-size: 30px;
         }
         .toggle {
             position: absolute;
@@ -93,6 +98,8 @@ export default {
         font-size: 14px;
         z-index: 98;
         transition: left 400ms ease-in-out;
+        overflow-y: auto;
+        overflow-x: hidden;
         ul {
             margin-top: 60px;
         }
@@ -110,6 +117,7 @@ export default {
         }
     }
     .mask {
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -120,5 +128,9 @@ export default {
         opacity: 0;
         transition: opacity 400ms ease-in-out;
     }
+}
+
+.container {
+    padding-top: 60px;
 }
 </style>
