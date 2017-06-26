@@ -40,4 +40,8 @@ h1,
 h2 {
   font-weight: normal;
 }
+
+.container {
+  padding-top: 60px;
+}
 </style>

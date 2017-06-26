@@ -42,6 +42,7 @@ export default {
                 mousewheelControl: true,
                 observeParents: true,
                 onSlideChangeEnd: swiper => {
+                    swiper.removeSlide(0);//保持页面中只存在两个slider节点
                     this.count++;
                 }
             },

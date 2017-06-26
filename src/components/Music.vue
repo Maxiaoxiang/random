@@ -29,7 +29,7 @@ export default {
           })
         })
         .catch(error => {
-          throw ('获取用户歌单失败' + error);
+          console.error ('获取用户歌单失败' + error);
         });
     },
     //获取歌曲
@@ -40,7 +40,7 @@ export default {
           this.$store.state.music.url = result[0].url;
           this.music = this.$store.state.music;
         }).catch(error => {
-          throw ('获取歌曲链接失败' + error);
+          console.error ('获取歌曲链接失败' + error);
         })
     },
     //播放歌曲

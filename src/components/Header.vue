@@ -129,8 +129,4 @@ export default {
         transition: opacity 400ms ease-in-out;
     }
 }
-
-.container {
-    padding-top: 60px;
-}
 </style>

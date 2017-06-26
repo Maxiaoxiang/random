@@ -35,7 +35,7 @@ export default {
           window.scroll(0, 0);
         })
         .catch(error => {
-          thorw('请求随机文章失败' + error);
+          console.error('请求随机文章失败' + error);
         });
     }
   }
