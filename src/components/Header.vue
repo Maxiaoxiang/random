@@ -5,7 +5,7 @@
             <div @click="toggle" class="toggle iconfont" :class="returnVertical === 'horizontal'? 'horizontal' : 'vertical'">&#xe646;</div>
             <div class="nav" id="nav">
                 <ul>
-                    <li v-for="nav in navs">
+                    <li v-for="nav in navs" :key="nav">
                         <i class="iconfont" v-html="nav.icon"></i>
                         <router-link :to="nav.link">{{nav.name}}</router-link>
                     </li>

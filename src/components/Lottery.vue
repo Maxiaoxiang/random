@@ -2,7 +2,7 @@
     <div class="mod-lottery">
         <div class="hd">
             <div class="lottery">
-                <span v-for="lottery in data.lotterys">{{lottery}}</span>
+                <span v-for="lottery in data.lotterys" :key="lottery">{{lottery}}</span>
                 <span v-if="data.blue" class="blue-ball">{{data.blue}}</span>
             </div>
         </div>

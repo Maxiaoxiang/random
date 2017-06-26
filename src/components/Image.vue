@@ -1,7 +1,7 @@
 <template>
     <div class="mod-image" :class="rVertical">
         <swiper :options="swiperOption" ref="mySwiper">
-            <swiper-slide v-for="slide in swiperSlides">
+            <swiper-slide v-for="slide in swiperSlides" :key="slide">
                 <div class="hd">
                     <img :src="slide.url" :alt="slide.title" @click="toggle">
                 </div>
