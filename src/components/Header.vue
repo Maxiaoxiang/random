@@ -12,7 +12,7 @@
                 </ul>
             </div>
         </div>
-        <div class="mask" @click="toggle" v-show="!isOpen"></div>
+        <div class="mask" @click="toggle" id="mask"></div>
     </div>
 </template>
 
@@ -44,11 +44,14 @@ export default {
         //展开收起侧栏导航
         toggle() {
             const $nav = document.getElementById('nav');
+            const $mask = document.getElementById('mask');
             if (this.$data.isOpen) {
                 $nav.style.left = '0px';
+                $mask.style.opacity = 1;
                 this.$data.isOpen = false;
             } else {
                 $nav.style.left = '-120px';
+                $mask.style.opacity = 0;
                 this.$data.isOpen = true;
             }
         }
@@ -59,7 +62,7 @@ export default {
 .mod-header {
     position: relative;
     z-index: 99;
-    .header{
+    .header {
         position: relative;
         display: flex;
         align-items: center;
@@ -67,41 +70,55 @@ export default {
         background-color: #303641;
         color: #fff;
         font-size: 14px;
-        .logo{
+        z-index: 98;
+        .logo {
             display: inline-block;
             margin: 0 auto;
-            font-size: 40px;
+            font-size: 32px;
         }
-        .toggle{
+        .toggle {
             position: absolute;
             right: 20px;
             font-size: 28px;
         }
     }
-    .nav{
+    .nav {
         position: fixed;
         top: 0;
-        left: 0;
+        left: -120px;
         width: 120px;
         height: 100%;
         background-color: #303641;
         color: #fff;
         font-size: 14px;
-        ul{
+        z-index: 98;
+        transition: left 400ms ease-in-out;
+        ul {
             margin-top: 60px;
         }
-        li{
+        li {
             display: block;
             padding-left: 15px;
             height: 50px;
             line-height: 50px;
             box-sizing: border-box;
-            i{
+            i {
                 display: inline-block;
                 width: 30px;
                 text-align: center;
             }
         }
+    }
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 97;
+        opacity: 0;
+        transition: opacity 400ms ease-in-out;
     }
 }
 </style>
