@@ -42,7 +42,9 @@ export default {
                 mousewheelControl: true,
                 observeParents: true,
                 onSlideChangeEnd: swiper => {
-                    swiper.removeSlide(0);//保持页面中只存在两个slider节点
+                    if(this.swiperSlides.length > 5){
+                        swiper.removeSlide(0);//限制节点数量
+                    }
                     this.count++;
                 }
             },
@@ -69,9 +71,6 @@ export default {
         //返回横竖屏状态
         rVertical() {
             return this.$store.state.status.isVertical;
-        },
-        swiper() {
-            return this.$refs.mySwiper.swiper;
         }
     },
     mounted() {
@@ -211,8 +210,10 @@ export default {
             width: 100%;
             color: #fff;
             font-size: 14px;
+            -webkit-box-sizing: border-box;
             box-sizing: border-box;
             background: rgba(1, 1, 1, 0.5);
+            -webkit-transition: bottom 600ms ease-in-out;
             transition: bottom 600ms ease-in-out;
             font-size: 14px;
             .title {

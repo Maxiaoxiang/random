@@ -6,7 +6,7 @@
     </div>
     <div class="bd">
       <ul>
-        <li v-for="item in data.items">
+        <li v-for="item in data.items" :key="item">
           <div class="item">{{item}}</div>
           <button @click="del" class="del" v-bind:data-value="item"></button>
         </li>

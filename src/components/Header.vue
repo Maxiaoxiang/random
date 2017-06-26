@@ -2,8 +2,8 @@
     <div class="mod-header">
         <div class="header">
             <span class="iconfont logo">&#xe66c;</span>
-            <div @click="toggle" class="toggle iconfont" :class="returnVertical === 'horizontal'? 'horizontal' : 'vertical'">&#xe646;</div>
-            <div class="nav" id="nav">
+            <div @click="toggle" class="toggle iconfont" :class="rVertical === 'horizontal'? 'horizontal' : 'vertical'" v-html="rOpen ? '&#xe646;' : '&#xe643;'"></div>
+            <div class="nav" id="nav" :class="rOpen ? 'close' : 'open'">
                 <ul>
                     <li v-for="nav in navs" :key="nav">
                         <i class="iconfont" v-html="nav.icon"></i>
@@ -12,7 +12,7 @@
                 </ul>
             </div>
         </div>
-        <div class="mask" @click="toggle" id="mask"></div>
+        <div class="mask" @click="toggle" id="mask" :class="rOpen ? 'close' : 'open'"></div>
     </div>
 </template>
 
@@ -30,32 +30,23 @@ export default {
                 { name: '美食', link: '/Food', icon: '&#xe650;' },
                 { name: '彩票', link: '/lottery', icon: '&#xe654;' },
                 { name: '自定义', link: '/Custom', icon: '&#xe602;' },
-            ],
-            isOpen: true
+            ]
         }
     },
     computed: {
         //返回横竖屏状态
-        returnVertical() {
+        rVertical() {
             return this.$store.state.status.isVertical;
+        },
+        //返回导航状态
+        rOpen() {
+            return this.$store.state.status.isOpen;
         }
     },
     methods: {
         //展开收起侧栏导航
         toggle() {
-            const $nav = document.getElementById('nav');
-            const $mask = document.getElementById('mask');
-            if (this.$data.isOpen) {
-                $nav.style.left = '0px';
-                $mask.style.opacity = 1;
-                $mask.style.display = 'block';
-                this.$data.isOpen = false;
-            } else {
-                $nav.style.left = '-120px';
-                $mask.style.opacity = 0;
-                $mask.style.display = 'none';
-                this.$data.isOpen = true;
-            }
+            this.$store.state.status.isOpen = !this.$store.state.status.isOpen;
         }
     }
 }
@@ -97,9 +88,16 @@ export default {
         color: #fff;
         font-size: 14px;
         z-index: 98;
+        -webkit-transition: left 400ms ease-in-out;
         transition: left 400ms ease-in-out;
         overflow-y: auto;
         overflow-x: hidden;
+        &.open {
+            left: 0;
+        }
+        &.close {
+            left: -120px;
+        }
         ul {
             margin-top: 60px;
         }
@@ -117,7 +115,6 @@ export default {
         }
     }
     .mask {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -126,7 +123,15 @@ export default {
         background: rgba(0, 0, 0, 0.4);
         z-index: 97;
         opacity: 0;
+        -webkit-transition: opacity 400ms ease-in-out;
         transition: opacity 400ms ease-in-out;
+        &.open {
+            opacity: 1;
+        }
+        &.close {
+            opacity: 0;
+            visibility: hidden;
+        }
     }
 }
 </style>

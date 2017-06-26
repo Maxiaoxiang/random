@@ -14,29 +14,56 @@
 </template>
 
 <script>
+
+(function () {
+    let lastTime = 0;
+    let vendors = ['ms', 'moz', 'webkit', 'o'];
+    for (let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+    }
+    if (!window.requestAnimationFrame) window.requestAnimationFrame = (callback, element) => {
+        let currTime = new Date().getTime();
+        let timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        let id = window.setTimeout(() => {
+            callback(currTime + timeToCall);
+        }, timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+    };
+    if (!window.cancelAnimationFrame) window.cancelAnimationFrame = (id) => {
+        clearTimeout(id);
+    };
+}());
+
 export default {
     name: 'app',
     data() {
         return {
             data: {
-                arr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+                base_arr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
                 lotterys: [],
                 blue: ''
             }
         }
     },
-    //实例化后调用
     created() {
-        this.random();
+        this.randomStart();
     },
     methods: {
-        //随机
-        random() {
-            let temp = JSON.parse(JSON.stringify(this.data.arr));
+        //随机开始
+        randomStart() {
+            let temp = JSON.parse(JSON.stringify(this.data.base_arr));
             let seven = JSON.parse(JSON.stringify(this.shuffle(temp, 8)));
             let blue = JSON.parse(JSON.stringify(this.shuffle(seven, 1)));
-            this.data.lotterys = this.bubble(seven);
+            this.data.lotterys = seven;
             this.data.blue = blue[0];
+            requestAnimationFrame(this.randomStart);
+        },
+        //随机结束取值
+        random() {
+            const that = this;
+            cancelAnimationFrame(this.randomStart);
         },
         /**
          * 洗牌算法 
@@ -81,19 +108,18 @@ export default {
             display: flex;
             justify-content: space-around;
             align-items: center;
-        }
-        span {
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            color: #fff;
-            background-color: #c90000;
-            border-radius: 50%;
-            &.blue-ball {
-                background-color: #0084f4;
-            }
-        }
+        } // span {
+        //     width: 40px;
+        //     height: 40px;
+        //     line-height: 40px;
+        //     text-align: center;
+        //     color: #fff;
+        //     background-color: #c90000;
+        //     border-radius: 50%;
+        //     &.blue-ball {
+        //         background-color: #0084f4;
+        //     }
+        // }
     }
     .bd {
         .random {

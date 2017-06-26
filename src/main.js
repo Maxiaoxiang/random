@@ -29,6 +29,7 @@ Vue.prototype.jsonp = jsonp
  * 
  * status      => 状态
  *  isVertical => 是否竖屏
+ *  isOpen     => 导航是否开启
  */
 const store = new Vuex.Store({
   state: {
@@ -39,7 +40,8 @@ const store = new Vuex.Store({
       isPlaying: false
     },
     status: {
-      isVertical: true
+      isVertical: true,
+      isOpen: true
     }
   },
   mutations: {
