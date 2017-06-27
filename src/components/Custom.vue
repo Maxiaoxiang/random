@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       data: {
-        items: ['mss', 'sis', 'xiaoming', 'xiaolv']
+        items: []
       }
     }
   },
