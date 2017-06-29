@@ -156,7 +156,7 @@ export default {
         },
         //横屏收起描述
         toggle() {
-            if (that.$store.state.status.isVertical === 'horizontal') {
+            if (this.$store.state.status.isVertical === 'horizontal') {
                 let $description = document.getElementById('description');
                 $description.style.bottom = $description.style.bottom == 0 || $description.style.bottom == '0px' ? -$description.offsetHeight + 'px' : 0;
             }
