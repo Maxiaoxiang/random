@@ -2,8 +2,6 @@
 
 > A Vue.js project for Random. 
 
-> from Mss.
-
 ## Build Setup
 
 ``` bash
