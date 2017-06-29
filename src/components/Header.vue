@@ -1,8 +1,8 @@
 <template>
     <div class="mod-header">
-        <div class="header">
+        <div class="header" :class="rVertical">
             <span class="iconfont logo">&#xe66c;</span>
-            <div @click="toggle" class="toggle iconfont" :class="rVertical === 'horizontal'? 'horizontal' : 'vertical'" v-html="rOpen ? '&#xe646;' : '&#xe643;'"></div>
+            <div @click="toggle" class="toggle iconfont" :class="rVertical" v-html="rOpen ? '&#xe646;' : '&#xe643;'"></div>
             <div class="nav" id="nav" :class="rOpen ? 'close' : 'open'">
                 <ul>
                     <li v-for="nav in navs" :key="nav">

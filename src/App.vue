@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app" :class="rVertical">
     <mod-header></mod-header>
     <div class="container">
       <router-view></router-view>
@@ -14,7 +14,13 @@ export default {
   components: {
     'mod-header': header,
     'mod-footer': footer
-  }
+  },
+  computed: {
+    //返回横竖屏状态
+    rVertical() {
+      return this.$store.state.status.isVertical;
+    }
+  },
 }
 </script>
 
@@ -43,5 +49,16 @@ h2 {
 
 .container {
   padding-top: 60px;
+}
+
+.app {
+  &.horizontal {
+    .header {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .container {
+      padding-top: 0;
+    }
+  }
 }
 </style>
