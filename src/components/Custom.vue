@@ -1,47 +1,47 @@
 <template>
   <div class="mod-custom">
-    <div class="hd">
-      <input type="text" id="option" class="input" placeholder="请输入选项名称">
-      <button @click="add" class="btn">添加</button>
-    </div>
-    <div class="bd">
-      <ul>
-        <li v-for="item in data.items" :key="item">
-          <div class="item">{{item}}</div>
-          <button @click="del" class="del" v-bind:data-value="item"></button>
-        </li>
-      </ul>
-    </div>
-    <div class="ft">
-      <button @click="random" class="random">随机</button>
-    </div>
+	<div class="hd">
+	  <input type="text" id="option" class="input" placeholder="请输入选项名称">
+	  <button @click="add" class="btn">添加</button>
+	</div>
+	<div class="bd">
+	  <ul>
+		<li v-for="item in data.items" :key="item">
+		  <div class="item">{{item}}</div>
+		  <button @click="del" class="del" v-bind:data-value="item"></button>
+		</li>
+	  </ul>
+	</div>
+	<div class="ft">
+	  <button @click="random" class="random">随机</button>
+	</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
       data: {
         items: []
       }
-    }
+    };
   },
   methods: {
     //添加
     add() {
       const option = document.getElementById("option");
-      if (option.value != '') {
+      if (option.value != "") {
         this.data.items.push(option.value);
-        option.value = '';
+        option.value = "";
       }
     },
     //删除
     del(event) {
-      let value = event.currentTarget.getAttribute('data-value');
+      let value = event.currentTarget.getAttribute("data-value");
       let index = this.data.items.indexOf(value);
-      if (index != '-1') {
+      if (index != "-1") {
         this.data.items.splice(index, 1);
       }
     },
@@ -51,13 +51,13 @@ export default {
       //结果数量，结果数量<数组长度&&结果数量>1
       // let c = count || 1;
       if (items.length > 1) {
-        console.log(this.shuffle(items, 1));
+        console.log(this.shuffle(items, 1)[0]);
       } else {
-        alert('至少需要两个选项');
+        alert("至少需要两个选项");
       }
     },
     /**
-     * 洗牌算法 
+     * 洗牌算法
      * arr 数组
      * count 取出个数
      */
@@ -74,16 +74,16 @@ export default {
     },
     //深拷贝
     copyArr(arr) {
-      return arr.map((e) => {
-        if (typeof e === 'object') {
-          return Object.assign({}, e)
+      return arr.map(e => {
+        if (typeof e === "object") {
+          return Object.assign({}, e);
         } else {
-          return e
+          return e;
         }
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scope>
